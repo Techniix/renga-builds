@@ -1,0 +1,61 @@
+# Publish a Renga build as a GitHub Release.
+#
+# Each build is pushed to its own branch, build/<name>, as an ISO split into
+# parts under GitHub's 100 MB file limit, with a manifest (build.txt) and a
+# SHA-256 checksum. This workflow is started by hand from the Actions tab
+# ("Run workflow"): it joins the parts, verifies the checksum, and creates a
+# pre-release with the single ISO as its download. Optionally it deletes the
+# build branch afterwards so the repository stays small.
+
+name: Publish build
+
+on:
+  workflow_dispatch:
+    inputs:
+      build:
+        description: "Build name (the part after build/, for example 2026.11.12-f59)"
+        required: true
+      delete_branch:
+        description: "Delete the build branch after publishing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the build branch
+        uses: actions/checkout@v4
+        with:
+          ref: build/${{ inputs.build }}
+
+      - name: Join the parts and verify the checksum
+        run: tools/join.sh
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD: ${{ inputs.build }}
+        run: |
+          iso=$(cat build.txt | sed -n 's/^iso: //p')
+          title=$(cat build.txt | sed -n 's/^title: //p')
+          sed -n '/^notes:/,$p' build.txt | tail -n +2 > notes.md
+          gh release create "renga-$BUILD" "$iso" "$iso.sha256" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "${{ github.event.repository.default_branch }}" \
+            --title "$title" \
+            --notes-file notes.md \
+            --prerelease
+
+      - name: Delete the build branch
+        if: ${{ inputs.delete_branch }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The release keeps its own copy of the ISO and its tag points at
+          # the default branch, not at the build commit, so once the branch
+          # is gone the parts are unreachable and the repository stays small.
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/build/${{ inputs.build }}"
