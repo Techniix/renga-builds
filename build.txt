@@ -1,0 +1,13 @@
+iso: renga-2026.11.14-pointer-renguin-anyboot.iso
+title: Renga 2026.11.14: pointer fix, packaging, Renguin (static Linux programs)
+commit: dc0aa5b8
+notes:
+Renga anyboot image built from `ce/main` at `dc0aa5b8` with a clean tree, on 2026-11-14. Revision: `hrev60381+273 (Renga dc0aa5b8 2026-11-14)`.
+
+Sweep (four-way, tree d4c78d66, the same code; dc0aa5b8 adds documentation only): BIOS 1034/1034, --smp 2 1033/1033, UEFI 1031/1031. renga-raw: first run 1280/1312, where sound_settings.output_device_menu (which also failed before this batch, its detail showing the right device) left the default output on the second card and 31 later media, camera and capture checks failed with it; rerun 1416/1419 (sound_settings.output_device_menu again; media_usb.unplug_fallback and media_audio.route_click_free, known flaky). Every check of this batch passed in every run. QEMU results, not hardware results.
+
+Pointer (Darmoshark M3 report): no backlog after a busy moment (queued moves are merged, clicks never merged, dropped or reordered), the watcher no longer runs at 1000 Hz after a rest, app_server's event loop above ordinary work, and events input_server cannot hand over yet wait instead of being dropped. Input preferences: "Acceleration profile: Adaptive (default) / Classic"; Adaptive follows hand speed, so 125 Hz and 1000 Hz mice feel the same. A mouse with two mouse interfaces is one device in Input preferences.
+
+Also: LinuxKPI Manager's driver settings window shows its settings (mt7921e: "Card does the encryption" and three more). Gamepad agent and crash report notifier are background servers (no longer in Deskbar). Renga's system packages have the vendor "Techniix", so they can be published in the Renga repository.
+
+Renguin (first time in Renga): static Linux x86-64 command-line programs run directly (the kernel hands them to the renguin module). In QEMU 17 of Renguin's 18 test programs pass, static glibc and static PIE included; dynamic Linux programs need a Linux root, not yet in the image.
