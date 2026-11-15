@@ -1,0 +1,4 @@
+name: 2026.11.15-batch2-midway
+profile: renga-anyboot
+revision: hrev60381+323 (Renga 2da664f7 2026-11-15)
+note: batch 2 midway, no four-way sweep; default-profile boot check (renguin suite) passed in QEMU
