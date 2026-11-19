@@ -1,0 +1,4 @@
+name: 2026.11.19-batch2
+profile: renga-anyboot
+revision: hrev60381+329 (Renga 02c9af2b 2026-11-19)
+sweep: default, --smp 2, --firmware uefi pass; renga-raw: pre-existing audio/Media timing, sound_settings and crashlog_test failures only
