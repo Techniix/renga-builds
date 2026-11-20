@@ -1,0 +1,4 @@
+name: 2026.11.20-batch7
+profile: renga-anyboot
+revision: hrev60381+382 (Renga bc75397f 2026-11-20)
+sweep: default 1315, --smp 2 1315, --firmware uefi 1312 checks, all pass; renga-raw 1798 checks, 3 failed: media.click_free_volume and media_usb.unplug_fallback (known-flaky, passed on the retry), snap.deskbar_switcher (no Deskbar in that phase; test fixed in d6529186)
