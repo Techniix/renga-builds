@@ -1,0 +1,4 @@
+name: 2026.11.20-batch3
+profile: renga-anyboot
+revision: hrev60381+341 (Renga bdb6eeb6 2026-11-19)
+sweep: default, --smp 2 pass; --firmware uefi 1176 checks, 0 failed (after c3c665b1); renga-raw 1601 checks, 6 failed: QEMU timing of the second card and low-latency mode only
