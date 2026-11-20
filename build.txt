@@ -1,0 +1,4 @@
+name: 2026.11.20-batch6
+profile: renga-anyboot
+revision: hrev60381+376 (Renga f8b6db7e 2026-11-20)
+sweep: default 1272, --smp 2 1272, --firmware uefi 1269 checks, all pass; renga-raw 1749 checks, 4 failed, all known-flaky; retry: 1 failed (sound_audio.mirror_second, on the retry-once list, as in batch 5)
