@@ -1,0 +1,4 @@
+name: 2026.11.20-batch5
+profile: renga-anyboot
+revision: hrev60381+369 (Renga 5451854f 2026-11-20)
+sweep: default 1271, --smp 2 1270, --firmware uefi 1268 checks, only pointer_rate.latency.1000hz/8000hz failed (a stale ce_vmouse object, rebuilt: suite passes); renga-raw 1693 checks, 13 failed, retry: 2 failed (media_usb_audio.back_on_usb, sound_audio.mirror_second; both on the retry-once list)
