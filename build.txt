@@ -1,0 +1,4 @@
+name: 2026.11.20-batch4
+profile: renga-anyboot
+revision: hrev60381+353 (Renga 25976028 2026-11-20)
+sweep: default 1227, --smp 2 1227, --firmware uefi 1224 checks, all pass; renga-raw 1647 checks, 1 failed (media_usb.unplug_fallback, open since F-31), retry 2 failed (the same, sound_audio.mirror_second; both on the retry-once list)
