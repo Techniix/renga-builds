@@ -1,0 +1,4 @@
+name: 2026.11.20-batch8
+profile: renga-anyboot
+revision: hrev60381+393 (Renga 779a5335 2026-11-20)
+sweep: default 1329, --smp 2 1329, --firmware uefi 1326 checks, all pass (74b3b0e8); renga-raw 1813 checks, 3 failed, all known-flaky (media_drift.skew_corrected, media_usb.unplug_fallback, sound_audio.mirror_second), not retried (65e9ab3d)
