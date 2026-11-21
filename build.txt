@@ -1,3 +1,4 @@
+iso: renga-2026.11.20-batch5-anyboot.iso
 name: 2026.11.20-batch5
 profile: renga-anyboot
 revision: hrev60381+369 (Renga 5451854f 2026-11-20)
