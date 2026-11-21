@@ -1,3 +1,4 @@
+iso: renga-2026.11.15-batch2-midway-anyboot.iso
 name: 2026.11.15-batch2-midway
 profile: renga-anyboot
 revision: hrev60381+323 (Renga 2da664f7 2026-11-15)
