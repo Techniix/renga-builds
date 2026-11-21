@@ -1,0 +1,4 @@
+name: 2026.11.21-batch9
+profile: renga-anyboot
+revision: hrev60381+402 (Renga 7aae0d53 2026-11-21)
+sweep: default 1368, --smp 2 1368, --firmware uefi 1364 checks, all pass (f1d9ad14); renga-raw 1852 checks, 6 failed: media_drift.skew_measured, media_drift.skew_removed, media.click_free_volume, media_latency.low_latency_latency (known-flaky), media_routing.exclude_beside_plain, media_routing.transient_live_switch (passed when media_routing ran alone; no media code changed)
